@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="de.leuphana.internet.gwtshop.shared.model.Bachelorthesis"
+		table="BACHELORTHESIS">
+		<id name="productNumber" column="PRODUCTNUMBER">
+			<generator class="native" />
+		</id>
+
+		<property name="topic" />
+		<property name="sitecount" />
+	    <property name="student" />		
+		<property name="year" />
+		<property name="price" />
+		<property name="firstexaminer" />
+		<property name="secondexaminer" />
+
+	</class>
+</hibernate-mapping>

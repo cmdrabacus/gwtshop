@@ -1,0 +1,6 @@
+/*C2*/SET SCHEMA PUBLIC
+INSERT INTO SEMINARPAPER VALUES(1,'Guenther Frosch','Internettechnologien','Max Mustermann',13,30,'Internettechnologien',1999)
+INSERT INTO SEMINARPAPER VALUES(2,'Albert Alt','Softwarearchitekturen','Max Mustermann',11,15,'Softwarearchitekturen',2001)
+INSERT INTO BACHELORTHESIS VALUES(1,'Hans-Albrecht Mueller','Max Mustermann',29,'Guenther Mustermann',65,'GWT',2003)
+INSERT INTO BACHELORTHESIS VALUES(2,'Guenther Frosch','Max Mustermann',29,'Guenther Mustermann',45,'BWL',2005)
+COMMIT

@@ -1,0 +1,2 @@
+serviceClass: de.leuphana.internet.baseshop.client.DataService
+path: A417AB4D3A42336D657155D41699F3AC.gwt.rpc
