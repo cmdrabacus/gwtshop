@@ -20,13 +20,13 @@ import de.leuphana.internet.baseshop.shared.SeminarPaper;
 
 public class Backend extends Composite {
 
-	// Panels erzeugen
+	// Create a new panel
 	public VerticalPanel vp = new VerticalPanel();
 
-	// Neues Admin Objekt erzeugen
+	// Create a new admin object
 	BackendAccess admin = new BackendAccess();
 
-	// Uebersetzungen per Constants
+	// Create the constants for translation
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -34,7 +34,7 @@ public class Backend extends Composite {
 	}
 
 	public Backend() {
-		// Widget initalisieren
+		// Initial widget
 		Widget wg = new Widget();
 		wg = onInitialize();
 		initWidget(wg);
@@ -42,13 +42,13 @@ public class Backend extends Composite {
 
 	public Widget onInitialize() {
 
-		// Form Elemente festlegen
+		// Init forms
 		final TextBox username;
 		final PasswordTextBox password;
 		final FormPanel formPanel = new FormPanel();
 		final SubmitButton button = new SubmitButton(constants.login());
 
-		// Panels erzeugen
+		// Create panels
 		VerticalPanel verticalPanel = new VerticalPanel();
 		verticalPanel.add(formPanel);
 
@@ -58,16 +58,16 @@ public class Backend extends Composite {
 		vp.setWidth("100%");
 		formPanel.setWidget(vp);
 
-		// Forms erzeugen
+		// Create forms
 		username = new TextBox();
 		password = new PasswordTextBox();
 		
-		// Panels erzeugen
+		// Create panels
 		final HorizontalPanel hPanel = new HorizontalPanel();
 		final HorizontalPanel BAhPanel = new HorizontalPanel();
 		final HorizontalPanel SEhPanel = new HorizontalPanel();
 		
-		// Buttons erzeugen
+		// Create buttons
 		final Button embedBA = new Button(constants.createBachelorPaper());
 		embedBA.addClickHandler(new ClickHandler() {
 
@@ -87,7 +87,7 @@ public class Backend extends Composite {
 		});
 		embedSE.setVisible(false);
 
-		// Widgets zum Panel hinzufuegen
+		// Add widgets to panel
 		BAhPanel.add(embedBA);
 		SEhPanel.add(embedSE);
 		embedBA.setVisible(false);
@@ -99,7 +99,7 @@ public class Backend extends Composite {
 		vp.add(button);
 		vp.add(hPanel);
 
-		// Handler erzeugen
+		// Create handler
 		button.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

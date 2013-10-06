@@ -23,12 +23,12 @@ import de.leuphana.internet.baseshop.client.CartElementPopup;
 
 public class CartTable extends Composite {
 
-	// Tabelle fuer den Warenkorb erstellen.
+	// Create cart table
 	CellTable<CartElement> cartCell = new CellTable<CartElement>();
 	
 	CartTable cartTable = this;
 
-	// Uebersetzungen
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -44,7 +44,7 @@ public class CartTable extends Composite {
 
 	private Widget onInitialize() {
 
-		// Einstellungen fuer die Warenkorbtabelle
+		// cart table settings
 		cartCell.setWidth("100%", true);
 		cartCell.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 		cartCell.setPageSize(3);
@@ -61,7 +61,7 @@ public class CartTable extends Composite {
 			}
 		});
 
-		// Spalte fuer die Anzahl
+		// quantity column
 		TextColumn<CartElement> anzahlColumn = new TextColumn<CartElement>() {
 			@Override
 			public String getValue(CartElement element) {
@@ -70,7 +70,7 @@ public class CartTable extends Composite {
 		};
 		cartCell.addColumn(anzahlColumn, constants.quantity());
 
-		// Spalte fuer den Autornamen
+		// author column
 		TextColumn<CartElement> authorNameColumn = new TextColumn<CartElement>() {
 			@Override
 			public String getValue(CartElement element) {
@@ -79,7 +79,7 @@ public class CartTable extends Composite {
 		};
 		cartCell.addColumn(authorNameColumn, constants.student());
 
-		// Spalte fuer den Produktnamen
+		// product name column
 		TextColumn<CartElement> productNameColumn = new TextColumn<CartElement>() {
 			@Override
 			public String getValue(CartElement element) {
@@ -93,16 +93,16 @@ public class CartTable extends Composite {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				// Aktion fuer den "Orderbutton"
+				// Order button
 				Window.alert("Successful!");
 			}
 		});
 
-		// Panel erstellen, Widgets adden
+		// Create panel
 		HorizontalPanel horizontalPanel = new HorizontalPanel();
 		VerticalPanel vertiPan = new VerticalPanel();
 
-		// Einstellung fuer die Panels
+		// panel settings
 		vertiPan.add(orderButton);
 		vertiPan.add(cartCell);
 		horizontalPanel.setWidth("100%");
@@ -114,7 +114,7 @@ public class CartTable extends Composite {
 
 	}
 
-	// Cart updaten bei z.B. Hinzufuegen von Elementen
+	// update cart
 	public void updateCartTable() {
 		List<CartElement> elementList = new ArrayList<CartElement>();
 		for (CartElement element : Cart.getInstance().getCartElements()) {

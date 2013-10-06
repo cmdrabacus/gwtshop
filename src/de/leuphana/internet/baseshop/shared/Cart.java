@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Cart {
 	private static Cart instance = null;
 
-	// Instanz von Cart
+	// Singleton
 	public static Cart getInstance() {
 		if (instance == null) {
 			instance = new Cart();
@@ -14,10 +14,10 @@ public class Cart {
 		return instance;
 	}
 
-	// HashMap fuer die Elemente erstellen
+	// Create hashmap
 	private HashMap<Integer, CartElement> cartElementHashMap;
 
-	// Objekte uebergeben
+	// Transfer objects
 	private Exam exam;
 	private CartElement cartElement;
 
@@ -25,7 +25,7 @@ public class Cart {
 		this.cartElementHashMap = new HashMap<Integer, CartElement>();
 	}
 
-	// Exam zur HashMap hinzufuegen
+	// Add exam to hashmap
 	public void addExam(Exam exam) {
 		this.exam = exam;
 		if (cartElementHashMap.containsKey(this.exam.getProductNumber())) {
@@ -39,17 +39,17 @@ public class Cart {
 		}
 	
 	}
-	// Anzahl der Elemente aus der HashMap laden
+	// Get quantity
 	public int getNumberOfArticles() {
 		return cartElementHashMap.size();
 	}
 
-	// ValuePart aus HashMap laden
+	// Get values
 	public Collection<CartElement> getCartElements() {
 		return cartElementHashMap.values();
 	}
 
-	// Element aus der HashMap loeschen
+	// Delete elements
 	public void delCartElement(int productNumber, CartElement cartElement) {
 		this.cartElement = cartElement;
 		cartElement = cartElementHashMap.get(productNumber);
@@ -58,8 +58,6 @@ public class Cart {
 			cartElementHashMap.remove(productNumber);
 		}
 	}
-
-	// Elemente zum Warenkorb hinzufuegen
 	public void addToCart(Exam exam) {
 		Cart.getInstance().addExam(exam);
 	}

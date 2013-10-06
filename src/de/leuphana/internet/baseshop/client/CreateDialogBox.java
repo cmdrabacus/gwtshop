@@ -16,21 +16,21 @@ import de.leuphana.internet.baseshop.shared.SeminarPaper;
 public class CreateDialogBox extends DialogBox {
 	private final DataServiceAsync dataService = GWT.create(DataService.class);
 
-	// Uebersetzungen per Constants
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
 		return constants;
 	}
 
-	// Dialog fuer das Hinzufuegen von Seminararbeiten
+	// Dialogbox "Create Seminarpaper"
 	public CreateDialogBox(Backend backend, final SeminarPaper seminarpaper) {
 		super();
 
-		// Grid erzeugen, um Elemente anzuordnen
+		// Creata grid
 		Grid grid = new Grid(10, 2);
 
-		// Labels erzeugen
+		// Create labels
 		grid.setWidget(0, 0, new Label(constants.topic()));
 		grid.setWidget(1, 0, new Label(constants.course()));
 		grid.setWidget(2, 0, new Label(constants.docent()));
@@ -39,7 +39,7 @@ public class CreateDialogBox extends DialogBox {
 		grid.setWidget(5, 0, new Label(constants.year()));
 		grid.setWidget(6, 0, new Label(constants.price()));
 
-		// Formelemente erzeugen
+		// Create formelements
 		final TextBox topicField = new TextBox();
 		final TextBox courseField = new TextBox();
 		final TextBox docentField = new TextBox();
@@ -48,7 +48,7 @@ public class CreateDialogBox extends DialogBox {
 		final TextBox yearField = new TextBox();
 		final TextBox priceField = new TextBox();
 
-		// Labels zum Grid hinzufuegen
+		// Add labels to grid
 		grid.setWidget(0, 1, topicField);
 		grid.setWidget(1, 1, courseField);
 		grid.setWidget(2, 1, docentField);
@@ -59,7 +59,7 @@ public class CreateDialogBox extends DialogBox {
 
 		setText(constants.createSeminarPaper());
 
-		// Close Button erzeugen
+		// Create close button
 		Button closeButton = new Button(constants.close());
 
 		closeButton.addClickHandler(new ClickHandler() {
@@ -92,7 +92,7 @@ public class CreateDialogBox extends DialogBox {
 			}
 		});
 
-		// Zum Grid hinzufuegen
+		// Add buttons to grid
 		grid.setWidget(7, 1, createButton);
 		grid.setWidget(8, 1, closeButton);
 		setWidget(grid);
@@ -100,14 +100,14 @@ public class CreateDialogBox extends DialogBox {
 		closeButton.setFocus(true);
 	}
 
-	// Dialog fuer das Hinzufuegen von Bachelorarbeiten
+	// Dialogbox "Create Bachelorpaper"
 	public CreateDialogBox(Backend backend, final BachelorThesis bachelorthesis) {
 		super();
 
-		// Grid erzeugen
+		// Create grid
 		Grid grid = new Grid(10, 2);
 
-		// Labels erzeugen
+		// Create labels
 		grid.setWidget(0, 0, new Label(constants.topic()));
 		grid.setWidget(1, 0, new Label(constants.student()));
 		grid.setWidget(2, 0, new Label(constants.firstValidator()));
@@ -116,7 +116,7 @@ public class CreateDialogBox extends DialogBox {
 		grid.setWidget(5, 0, new Label(constants.year()));
 		grid.setWidget(6, 0, new Label(constants.price()));
 
-		// Elemente erzeugen
+		// Create elements
 		final TextBox topicField = new TextBox();
 		final TextBox studentField = new TextBox();
 		final TextBox firstValidatorField = new TextBox();
@@ -125,7 +125,7 @@ public class CreateDialogBox extends DialogBox {
 		final TextBox yearField = new TextBox();
 		final TextBox priceField = new TextBox();
 
-		// Labels zum Grid hinzufuegen
+		// Add labels to grid
 		grid.setWidget(0, 1, topicField);
 		grid.setWidget(1, 1, studentField);
 		grid.setWidget(2, 1, firstValidatorField);
@@ -136,7 +136,7 @@ public class CreateDialogBox extends DialogBox {
 
 		setText(constants.createBachelorPaper());
 
-		// Close Button erzeugen, Handler
+		// Close Button Handler
 		Button exitButton = new Button(constants.close());
 		exitButton.addClickHandler(new ClickHandler() {
 			@Override
@@ -145,7 +145,7 @@ public class CreateDialogBox extends DialogBox {
 			}
 		});
 
-		// Handler fuer createButton
+		// Handler for createButton
 		Button createPaperButton = new Button(constants.create());
 		createPaperButton.addClickHandler(new ClickHandler() {
 			@Override
@@ -168,7 +168,7 @@ public class CreateDialogBox extends DialogBox {
 			}
 		});
 
-		// Zum Grid hinzufuegen
+		// Add buttons to grid
 		grid.setWidget(7, 1, createPaperButton);
 		grid.setWidget(8, 1, exitButton);
 		setWidget(grid);
@@ -176,7 +176,7 @@ public class CreateDialogBox extends DialogBox {
 		exitButton.setFocus(true);
 	}
 
-	// Methoden zum Hinzufuegen der neuen Arbeiten
+	// Methods for add
 	public void addBachelorThesis(BachelorThesis bachelorThesis) {
 		dataService.addExam(bachelorThesis, new AsyncCallback<Boolean>() {
 

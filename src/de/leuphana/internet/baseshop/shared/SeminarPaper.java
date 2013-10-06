@@ -9,9 +9,9 @@ import javax.persistence.Id;
 @Entity
 public class SeminarPaper extends Exam implements Serializable {
 	private static final long serialVersionUID = -104200536559141294L;
-	
-	// Werte fuer Seminararbeit
-	private String course;
+
+        
+        private String course;
 	private String lecturer;
 	private String bachelorstudent;
 	private int price;

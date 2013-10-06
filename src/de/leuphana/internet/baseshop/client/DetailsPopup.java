@@ -16,10 +16,10 @@ import de.leuphana.internet.baseshop.shared.Exam;
 
 public class DetailsPopup extends DialogBox {
 
-	// Exam uebergeben
+	// Transfer exam object
 	private Exam exam;
 
-	// Uebersetzungen per Constants
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -40,10 +40,10 @@ public class DetailsPopup extends DialogBox {
 		detailsPanel.add(new Label(constants.price() + ": " + exam.getPrice()));
 		detailsPanel.add(new Label(constants.year() + ": " + exam.getYear()));
 
-		// Buttons zum Panel hinzufuegen
+		// Add buttons to panel
 		addButtonsToPanel(detailsPanel);
 
-		// DialogBox formatieren
+		// Dialogbox options 
 		Grid grid = new Grid(1, 2);
 		HTMLTable.CellFormatter formatter = grid.getCellFormatter();
 		formatter.setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_TOP);
@@ -55,7 +55,7 @@ public class DetailsPopup extends DialogBox {
 
 	protected void addButtonsToPanel(VerticalPanel vertiPan) {
 		Button exitButton = new Button(constants.close());
-		// Exit-Button hinzufuegen
+		// Exit-Button 
 		exitButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
@@ -67,14 +67,14 @@ public class DetailsPopup extends DialogBox {
 		Button buyButton = new Button(constants.buy());
 		buyButton.addClickHandler(new ClickHandler() {
 
-			// Buy-Button hinzufuegen
+			// Buy-Button 
 			@Override
 			public void onClick(ClickEvent event) {
 				Cart.getInstance().addToCart(exam);
 			}
 		});
 		
-		// Buttons zum Panel hinzufuegen
+		// Add buttons to panel
 		vertiPan.add(buyButton);
 		vertiPan.add(exitButton);
 		exitButton.setFocus(true);

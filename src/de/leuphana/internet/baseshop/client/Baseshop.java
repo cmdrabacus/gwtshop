@@ -13,11 +13,11 @@ import de.leuphana.internet.baseshop.shared.CartTable;
 
 public class Baseshop implements EntryPoint {
 
-	// Cart und CartTable erzeugen
+	// Singleton
 	Cart cart = Cart.getInstance();
 	CartTable cartTable = new CartTable();
 
-	// Uebersetzungen
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -26,7 +26,7 @@ public class Baseshop implements EntryPoint {
 
 	public void onModuleLoad() {
 
-		// Menue Tabs
+		// Menue tabs
 		TabLayoutPanel tabMenu = new TabLayoutPanel(5, Unit.CM);
 		tabMenu.animate(4);
 		tabMenu.add(new ProductTable(), constants.products());
@@ -43,7 +43,7 @@ public class Baseshop implements EntryPoint {
 			}
 		});
 
-		// Tabs zum RootLayoutPanel hinzufuegen
+		// Add tabs to rootlayoutpanel
 		RootLayoutPanel.get().add(tabMenu);
 
 	}

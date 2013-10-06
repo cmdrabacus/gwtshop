@@ -6,10 +6,8 @@ public class CartElement implements Serializable {
 
 	private static final long serialVersionUID = 4031161156573867422L;
 	
-	// Wert fuer Anzahl
 	private int quantity = 0;
 	
-	// Exam Objekt uebergeben
 	private Exam exam;
 
 	public CartElement(Exam exam) {

@@ -4,7 +4,6 @@ public class BackendAccess {
 	private String username;
 	private String password;
 
-	// Zugangsdaten fuer das Backend
 	public BackendAccess() {
 		username = "user";
 		password = "pw";

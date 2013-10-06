@@ -21,17 +21,17 @@ DataService {
 		try {
 			return HibernateUtil.getSessionFactory().getCurrentSession();
 		} catch (HibernateException hEx) {
-			// Fehler fuer Current Session
+			// Error in "Current Session"
 			return HibernateUtil.getSessionFactory().openSession();
 		}
 	}
 
 	public List<Exam> getList(int start, int length) {
-		// Neue Liste erstellen
+		// Create new list
 		List<Exam> dbResult = new ArrayList<Exam>();
 		List<Exam> exam = new ArrayList<Exam>();
 		
-		// Session erstellen
+		// Create session
 		Session session = getSession();
 		session.beginTransaction();
 		exam.addAll(querySeminarworks(session, "from SeminarPaper"));
@@ -115,7 +115,7 @@ DataService {
 		session.getTransaction().commit();
 	}
 
-	// Suchfunktion
+	// Search
 	public List<Exam> getSearchList(int start, int length, String search) {
 		List<Exam> searchResult = new ArrayList<Exam>();
 

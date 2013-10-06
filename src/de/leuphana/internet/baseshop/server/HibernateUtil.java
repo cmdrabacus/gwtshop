@@ -13,7 +13,7 @@ public class HibernateUtil {
 
 	static {
 		try {
-			// Konfiguration laden
+			// Load config
 			AnnotationConfiguration config = new AnnotationConfiguration();
 			config.addAnnotatedClass(BachelorThesis.class);
 			config.addAnnotatedClass(SeminarPaper.class);
@@ -21,7 +21,7 @@ public class HibernateUtil {
 			new SchemaExport(config).create(true, true);
 			sessionFactory = config.buildSessionFactory();
 		} catch (Throwable ex) {
-			// Fehlerbehandlung
+			// Exception handling
 			System.err.println("Initial SessionFactory creation failed." + ex);
 			throw new ExceptionInInitializerError(ex);
 		}

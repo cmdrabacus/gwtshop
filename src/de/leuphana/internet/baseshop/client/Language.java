@@ -11,14 +11,14 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class Language extends Composite {
 
-	// Panel erzeugen
+	// Create panel
 	VerticalPanel vp = new VerticalPanel();
 
 	public Language() {
 
 		initWidget(vp);
 		
-		// Buttons fuer die Umstellung
+		// Buttons "translations"
 		Button deutsch = new Button("Deutsch");
 		Button english = new Button("English");
 

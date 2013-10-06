@@ -31,22 +31,22 @@ import de.leuphana.internet.baseshop.shared.Exam;
 public class ProductTable extends Composite {
 	
 
-	// DataService initialisieren
+	// Init DataService
 	final DataServiceAsync dataService = GWT.create(DataService.class);
 	VerticalPanel contentPanel = new VerticalPanel();
 
-	// Uebersetzungen per Constants
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
 		return constants;
 	}
 
-	// Suchfeld - und Button
+	// Search
 	public final Button searchButton = new Button(constants.search());
 	public final TextBox searchField = new TextBox();
 
-	// Widget Einstellungen
+	// Widget
 	public ProductTable() {
 		Widget wg = new Widget();
 		wg = onInitialize();
@@ -56,15 +56,15 @@ public class ProductTable extends Composite {
 
 	public Widget onInitialize() {
 
-		// Buttons und Suchfeld konfigurieren
+		// Buttons and search
 		searchField.setText(constants.search());
 		searchField.setFocus(true);
 		searchField.selectAll();
 
-		// Tabelle erstellen
+		// Create table
 		final CellTable<Exam> table = new CellTable<Exam>();
 
-		// Tabelleneinstellungen
+		// Table settings
 		table.setWidth("100%", true);
 		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 		table.setPageSize(5);
@@ -79,7 +79,7 @@ public class ProductTable extends Composite {
 			}
 		});
 
-		// Neue Spalte fuer den Namen hinzufuegen
+		// Name column
 		TextColumn<Exam> nameColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam examObject) {
@@ -88,7 +88,7 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(nameColumn, constants.topic());
 
-		// Neue Spalte fuer den Autor hinzufuegen
+		// Author column
 		TextColumn<Exam> addressColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam examObject) {
@@ -97,7 +97,7 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(addressColumn, constants.student());
 
-		// Neue Spalte fuer den Price hinzufuegen
+		// Price column
 		TextColumn<Exam> priceColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam examObject) {
@@ -106,10 +106,10 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(priceColumn, constants.price());
 
-		// Dataprovider fuer das Abfragen der Daten
+		// Dataprovider 
 		AsyncDataProvider<Exam> dataProvider = new AsyncDataProvider<Exam>() {
 
-			// Daten aus der Datenbank laden
+			// Load from database
 			@Override
 			protected void onRangeChanged(HasData<Exam> display) {
 				final int start = display.getVisibleRange().getStart();
@@ -130,7 +130,7 @@ public class ProductTable extends Composite {
 		};
 		dataProvider.addDataDisplay(table);
 
-		// Popup beim Klick auf ein Item
+		// Dialogbox
 		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Exam>() {
 
 			@Override
@@ -144,7 +144,7 @@ public class ProductTable extends Composite {
 		SimplePager pager = new SimplePager();
 		pager.setDisplay(table);
 
-		// Widgets zum VerticalPanel hinzufuegen
+		// Add widgets to panel
 		VerticalPanel vp = new VerticalPanel();
 		vp.add(searchField);
 		vp.add(table);
@@ -153,26 +153,26 @@ public class ProductTable extends Composite {
 
 		class MyHandler implements ClickHandler, KeyUpHandler {
 
-			// Beim Klick auf den Suchbutton
+			// Event "button"
 			public void onClick(ClickEvent event) {
 				executeSearch();
 			}
 
-			// Beim Tippen in das Suchfeld
+			// Event "enter"
 			public void onKeyUp(KeyUpEvent event) {
 				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					executeSearch();
 				}
 			}
 
-			// Eingabe zum Server senden
+			// Server communications
 			private void executeSearch() {
 				String searchText = searchField.getText();
 
 				CellTable<Exam> searchResultTable = createTable();
 				loadSearchResultCellTable(searchResultTable, searchText);
 
-				// Ergbnisse in Popup laden
+				// Results popup
 				new SearchResultPopup(ProductTable.this, searchButton,
 						searchResultTable);
 
@@ -180,23 +180,23 @@ public class ProductTable extends Composite {
 			}
 		}
 
-		// Handler fuer die Klick oder Keyboard
+		// Handler 
 		MyHandler handler = new MyHandler();
 		searchButton.addClickHandler(handler);
 		searchField.addKeyUpHandler(handler);
 
-		// Widgets zum Contentpanel hinzufuegen
+		// Add widgets to contentpanel
 		contentPanel.add(vp);
 
 		return vp;
 
 	}
 
-	// CellTable fuer die Ergbnisse erzeugen
+	// Result table
 	private void loadSearchResultCellTable(CellTable<Exam> searchResultTable,
 			final String search) {
 
-		// DataProvider erstellen
+		// DataProvider 
 		AsyncDataProvider<Exam> dataProvider = new AsyncDataProvider<Exam>() {
 
 			@Override
@@ -223,7 +223,7 @@ public class ProductTable extends Composite {
 	private CellTable<Exam> createTable() {
 		CellTable<Exam> table = new CellTable<Exam>();
 
-		// Spalte fuer Preis
+		// price column
 		TextColumn<Exam> priceColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam exam) {
@@ -232,7 +232,7 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(priceColumn, constants.price());
 
-		// Spalte fuer das Thema
+		// theme column
 		TextColumn<Exam> nameColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam exam) {
@@ -241,7 +241,7 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(nameColumn, constants.topic());
 
-		// Spalte fuer den Autor
+		// author column
 		TextColumn<Exam> yearColumn = new TextColumn<Exam>() {
 			@Override
 			public String getValue(Exam exam) {
@@ -250,7 +250,7 @@ public class ProductTable extends Composite {
 		};
 		table.addColumn(yearColumn, constants.bachelorstudent());
 
-		// Tabelle zurueckgeben
+		
 		return table;
 	}
 

@@ -15,7 +15,7 @@ import de.leuphana.internet.baseshop.shared.Exam;
 public class SearchResultPopup extends DialogBox {
 	private final Button closeButton;
 
-	// Ubersetzungen per Constants
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -26,16 +26,15 @@ public class SearchResultPopup extends DialogBox {
 			final Button searchButton, CellTable<Exam> table) {
 		super();
 
-		// Neues Panel erzeugen
+		// Create new panel
 		VerticalPanel vp = new VerticalPanel();
 
-		// Fensternamen festlegen
+		// Windowname
 		setText(constants.searchResult());
 
-		// CloseButton hinzufuegen
 		closeButton = new Button("Close");
 
-		// Handler hinzufuegen
+		// Handler
 		closeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				SearchResultPopup.this.hide();
@@ -44,10 +43,10 @@ public class SearchResultPopup extends DialogBox {
 			}
 		});
 
-		// Button zum Panel hinzufuegen
+		// Add button to contentpanel
 		vp.add(closeButton);
 
-		// PreviewHandler fuer Popup erstellen
+		// PreviewHandler 
 		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Exam>() {
 
 			@Override
@@ -63,7 +62,7 @@ public class SearchResultPopup extends DialogBox {
 		SimplePager pager = new SimplePager();
 		pager.setDisplay(table);
 
-		// Elemente zum Panel hinzufuegen
+		// Add elements to panel
 		vp.add(table);
 		vp.add(pager);
 		vp.add(closeButton);

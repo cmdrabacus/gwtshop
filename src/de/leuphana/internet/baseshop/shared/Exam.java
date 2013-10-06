@@ -10,7 +10,6 @@ import java.io.Serializable;
 public abstract class Exam implements Serializable {
 	private static final long serialVersionUID = -2792992498214976880L;
 	
-	// Werte fuer Arbeiten
 	int productnumber;
 	String topic;
 	int sitecount;

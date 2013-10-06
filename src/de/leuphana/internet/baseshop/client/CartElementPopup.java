@@ -18,12 +18,12 @@ import de.leuphana.internet.baseshop.shared.Exam;
 
 public class CartElementPopup extends DialogBox {
 
-	// Exam uebergeben
+	// Transfer exam object
 	private Exam exam;
 	private CartTable cartTable;
 	private CartElement cartElement;
 
-	// Uebersetzungen per Constants
+	// Translations
 	private BaseShopConstants constants = GWT.create(BaseShopConstants.class);
 
 	public BaseShopConstants getConstants() {
@@ -45,10 +45,10 @@ public class CartElementPopup extends DialogBox {
 		detailsPanel.add(new Label(constants.price() + ": " + exam.getPrice()));
 		detailsPanel.add(new Label(constants.year() + ": " + exam.getYear()));
 
-		// Buttons zum Panel hinzufuegen
+		// Add buttons to panel
 		addButtonsToPanel(detailsPanel);
 
-		// DialogBox formatieren
+		// Dialogbox options
 		Grid grid = new Grid(1, 2);
 		HTMLTable.CellFormatter formatter = grid.getCellFormatter();
 		formatter.setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_TOP);
@@ -83,7 +83,7 @@ public class CartElementPopup extends DialogBox {
 
 	}
 
-	// Element aus dem Warenkorb loeschen
+	// Delete elements form cart
 	public void delFromCart(Exam exam) {
 		Cart.getInstance().delCartElement(exam.getProductNumber(), cartElement);
 		cartTable.updateCartTable();

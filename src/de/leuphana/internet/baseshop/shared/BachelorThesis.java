@@ -9,9 +9,8 @@ import javax.persistence.Id;
 @Entity
 public class BachelorThesis extends Exam implements Serializable {
 	private static final long serialVersionUID = 3282998458292781891L;
-	
-	// Werte fuer Bachelorarbeit
-	private String bachelorstudent;
+
+        private String bachelorstudent;
 	private String firstexaminer;
 	private String secondexaminer;
 	private int price;
